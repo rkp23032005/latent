@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "builtAt": "2026-11-02",
+  "sample": "/photography/landscape-highlands.jpg",
+  "stats": {
+    "builtAt": "2026-11-02",
+    "read": 699,
+    "usable": 663,
+    "unsupported": 36,
+    "imported": 537,
+    "generated": 162,
+    "rejectedAtBuild": 0,
+    "invalidFiles": 1,
+    "duplicateFiles": 10,
+    "categories": 33
+  },
+  "counts": {
+    "full": 162,
+    "partial": 501,
+    "unsupported": 36,
+    "invalid": 0
+  },
+  "sources": [
+    {
+      "sourceId": "emulsion",
+      "repository": "https://github.com/peva3/EmulsionPresets",
+      "licence": "MIT",
+      "licenceFile": "LICENSE",
+      "attribution": "",
+      "verdict": "imported",
+      "reason": "accepted: licence verified",
+      "formats": [
+        "xmp"
+      ],
+      "filesFound": 451,
+      "presetsKept": 441,
+      "presetsDropped": 10,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 10,
+      "noticeFile": "licences/emulsion.txt",
+      "shipped": 441
+    },
+    {
+      "sourceId": "hstockeb",
+      "repository": "https://github.com/hstockeb/film-simulations-and-presets",
+      "licence": "CC-BY-4.0",
+      "licenceFile": "LICENSE",
+      "attribution": "based on Hstockeb Lightroom Presets & Film Simulations by Hernan Stockebrand (https://github.com/hstockeb/film-simulations-and-presets), CC BY 4.0, with changes",
+      "verdict": "imported",
+      "reason": "accepted: licence verified",
+      "formats": [
+        "xmp"
+      ],
+      "filesFound": 79,
+      "presetsKept": 79,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0,
+      "noticeFile": "licences/hstockeb.txt",
+      "shipped": 79
+    },
+    {
+      "sourceId": "irc-cinelike",
+      "repository": "https://github.com/IRCGraphic/D-Cinelike-and-Normal-Blockbuster-LUTs",
+      "licence": "CC0-1.0",
+      "licenceFile": "LICENSE",
+      "attribution": "",
+      "verdict": "imported",
+      "reason": "accepted: licence verified",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 10,
+      "presetsKept": 9,
+      "presetsDropped": 1,
+      "presetsInvalid": 1,
+      "presetsDuplicates": 0,
+      "noticeFile": "licences/irc-cinelike.txt",
+      "shipped": 9
+    },
+    {
+      "sourceId": "slay-luts",
+      "repository": "https://github.com/slaycamera/luts",
+      "licence": "CC-BY-4.0",
+      "licenceFile": "LICENSE",
+      "attribution": "slay — slaycamera.com",
+      "verdict": "imported",
+      "reason": "accepted: licence verified",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 5,
+      "presetsKept": 5,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0,
+      "noticeFile": "licences/slay-luts.txt",
+      "shipped": 5
+    },
+    {
+      "sourceId": "a6000-luts",
+      "repository": "https://github.com/jonmatifa/a6000-LUTs",
+      "licence": "CC0-1.0",
+      "licenceFile": "LICENSE",
+      "attribution": "",
+      "verdict": "imported",
+      "reason": "accepted: licence verified",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 3,
+      "presetsKept": 3,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0,
+      "noticeFile": "licences/a6000-luts.txt",
+      "shipped": 3
+    }
+  ],
+  "rejected": [
+    {
+      "sourceId": "jack4b-retro-film",
+      "repository": "https://github.com/Jack4B/Retro-Film-LUTs",
+      "licence": "CC-BY-SA-4.0",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "CC BY-SA share-alike would force us to re-license the derived preset table; the pack is also 378 MB.",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    },
+    {
+      "sourceId": "yahiaangelo-film-luts",
+      "repository": "https://github.com/YahiaAngelo/Film-Luts",
+      "licence": "unknown",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "Re-hosted third-party pack; its own README disclaims ownership, so we cannot trust the licence.",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    },
+    {
+      "sourceId": "scernst13-haldclut",
+      "repository": "https://github.com/scernst13/HaldCLUT-Cube-Files",
+      "licence": "CC0-1.0",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "CC0 is claimed over unattributed upstream HaldCLUT work, so the waiver is not the claimant’s to give.",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    },
+    {
+      "sourceId": "changyun233-lumix-vlog",
+      "repository": "https://github.com/changyun233/Lumix-V-log-LUTs",
+      "licence": "unknown",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "Bundles Panasonic’s official .vlt files and a third-party pack whose licence is not stated.",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    },
+    {
+      "sourceId": "abpy-fujifilm-profiles",
+      "repository": "https://github.com/abpy/FujifilmCameraProfiles",
+      "licence": "unknown",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "No licence file; camera profiles are proprietary Adobe .dng-adj data regardless.",
+      "formats": [
+        "xmp"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    },
+    {
+      "sourceId": "docm88-free-lut-pack",
+      "repository": "https://github.com/DocM88/Free-Lut-Pack",
+      "licence": "unknown",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "No licence file at all, so nothing here may be redistributed.",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    },
+    {
+      "sourceId": "videovillage-red-luts",
+      "repository": "https://github.com/videovillage/RED-Conversion-LUTs",
+      "licence": "unknown",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "Reverse-engineered proprietary RED gamma; redistribution is not ours to authorise.",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    },
+    {
+      "sourceId": "tareqameer-chroma",
+      "repository": "https://github.com/TareqAmeer/Chroma-App",
+      "licence": "GPL-3.0",
+      "licenceFile": "",
+      "attribution": "",
+      "verdict": "rejected",
+      "reason": "GPL/AGPL copyleft attaches to the bundled data, which we are not prepared to carry into a preset table.",
+      "formats": [
+        "cube"
+      ],
+      "filesFound": 0,
+      "presetsKept": 0,
+      "presetsDropped": 0,
+      "presetsInvalid": 0,
+      "presetsDuplicates": 0
+    }
+  ],
+  "problems": []
+}

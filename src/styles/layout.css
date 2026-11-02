@@ -1,0 +1,573 @@
+/* ==========================================================================
+   Latent — layout
+   Masthead, hero, sections, closing band, footer. The workspace lives in editor.css.
+   ========================================================================== */
+
+/* ---- Masthead --------------------------------------------------------- */
+/* Not a floating pill. A newspaper nameplate: rule above, rule below. */
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: var(--paper-200);
+  border-bottom: 1px solid var(--line-hard);
+}
+
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  height: 68px;
+}
+
+.masthead__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
+}
+
+.masthead__links {
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
+}
+
+.masthead__link {
+  position: relative;
+  font-family: var(--font-meta);
+  font-size: var(--t-meta);
+  letter-spacing: var(--tr-meta);
+  text-transform: uppercase;
+  color: var(--ink-700);
+  padding-block: var(--s-2);
+  transition: color var(--d-fast) var(--ease-out);
+}
+
+.masthead__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--d-base) var(--ease-out);
+}
+
+.masthead__link:hover {
+  color: var(--ink-900);
+}
+
+.masthead__link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---- Wordmark --------------------------------------------------------- */
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  color: var(--ink-900);
+}
+
+.wordmark__text {
+  font-family: var(--font-display);
+  font-size: 1.72rem;
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+/* The aperture dot doubles as the safelight signal. */
+.wordmark__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--r-pill);
+  background: var(--signal);
+  align-self: center;
+  transition: transform var(--d-base) var(--ease-out);
+}
+
+.wordmark:hover .wordmark__dot {
+  transform: scale(1.45);
+}
+
+.wordmark__sup {
+  font-family: var(--font-meta);
+  font-size: var(--t-micro);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--ink-500);
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* ---- Hero ------------------------------------------------------------- */
+
+.hero {
+  padding-top: clamp(var(--s-8), 7vw, var(--s-10));
+  padding-bottom: clamp(var(--s-8), 8vw, var(--s-10));
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(var(--s-6), 6vw, var(--s-9));
+  align-items: end;
+}
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+}
+
+.hero__eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line-mid);
+}
+
+.hero__title {
+  margin-bottom: var(--s-5);
+  max-width: 15ch;
+}
+
+.hero__lede {
+  margin-bottom: var(--s-6);
+}
+
+.hero__actions {
+  display: grid;
+  gap: var(--s-4);
+  max-width: 460px;
+}
+
+.hero__foot {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+
+/* Two prints, one behind the other, pinned to the right column. */
+.hero__plates {
+  position: relative;
+  display: grid;
+  justify-items: end;
+}
+
+.hero__plate--back {
+  position: absolute;
+  top: var(--s-7);
+  left: -8%;
+  width: 46%;
+  rotate: -4deg;
+  opacity: 0.96;
+}
+
+.hero__plate--front {
+  width: min(78%, 400px);
+  rotate: 1.5deg;
+  transition: rotate var(--d-slow) var(--ease-out);
+}
+
+.hero__plates:hover .hero__plate--front {
+  rotate: 0deg;
+}
+
+/* ---- Section head ----------------------------------------------------- */
+
+.shead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: var(--s-6);
+  align-items: end;
+  padding-bottom: var(--s-5);
+  margin-bottom: var(--s-6);
+  border-bottom: 1px solid var(--line-hard);
+}
+
+.shead__title {
+  max-width: 20ch;
+}
+
+/* ---- Presets ---------------------------------------------------------- */
+
+.look {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.look__name {
+  font-family: var(--font-display);
+  font-size: var(--t-title);
+  line-height: var(--lh-tight);
+}
+
+/* ---- Closing band ----------------------------------------------------- */
+/* The one dark surface on the homepage — a full-bleed plate, not a card. */
+
+.band {
+  position: relative;
+  background: var(--dark-100);
+  color: var(--dark-text);
+  border-block: 1px solid var(--dark-line);
+  padding-block: clamp(var(--s-8), 8vw, var(--s-10));
+  overflow: hidden;
+}
+
+.band__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: var(--s-8);
+  align-items: center;
+}
+
+.band .lede {
+  color: var(--dark-text-muted);
+}
+
+.band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+.band__aside {
+  display: grid;
+  gap: var(--s-3);
+  justify-items: start;
+  border-left: 1px solid var(--dark-line);
+  padding-left: var(--s-6);
+}
+
+/* ---- Footer ----------------------------------------------------------- */
+
+.foot {
+  background: var(--paper-200);
+  border-top: 1px solid var(--line-hard);
+  padding-block: var(--s-7) var(--s-5);
+}
+
+.foot__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 0.8fr));
+  gap: var(--s-6);
+  padding-bottom: var(--s-6);
+}
+
+.foot__col {
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+}
+
+.foot__list {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.foot__list a {
+  font-size: var(--t-small);
+  color: var(--ink-700);
+  transition: color var(--d-fast) var(--ease-out);
+}
+
+.foot__list a:hover {
+  color: var(--signal);
+}
+
+.foot__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ---- Workflow --------------------------------------------------------- */
+
+.workflow {
+  display: grid;
+  gap: clamp(var(--s-6), 5vw, var(--s-8));
+}
+
+/* Three frames pinned under the three moves, staggered like prints. */
+.strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-5);
+}
+
+.strip li:nth-child(2) {
+  margin-top: var(--s-5);
+}
+
+.strip li:nth-child(3) {
+  margin-top: var(--s-2);
+}
+
+.strip .frame {
+  padding: var(--s-2);
+  box-shadow: var(--lift-sm);
+}
+
+/* ---- Looks ------------------------------------------------------------ */
+
+.look {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.look__name {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-family: var(--font-display);
+  font-size: var(--t-title);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tr-display);
+}
+
+.look__glyph {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-sm);
+  color: var(--ink-700);
+  transition:
+    border-color var(--d-base) var(--ease-out),
+    color var(--d-base) var(--ease-out);
+}
+
+.sheet__cell:hover .look__glyph {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+.look__blurb {
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+  text-transform: none;
+  color: var(--ink-500);
+  font-family: var(--font-text);
+  font-size: var(--t-small);
+}
+
+.looks__note {
+  margin-top: var(--s-4);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Masthead extras --------------------------------------------------- */
+
+.masthead__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  color: var(--ink-900);
+  transition: border-color var(--d-fast) var(--ease-out);
+}
+
+.masthead__burger:hover {
+  border-color: var(--ink-900);
+}
+
+.masthead__drawer {
+  border-top: 1px solid var(--line-soft);
+  background: var(--paper-100);
+  padding-block: var(--s-4);
+}
+
+.masthead__drawer ul {
+  display: grid;
+}
+
+.masthead__drawer li {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.masthead__drawer li:last-child {
+  border-bottom: 0;
+}
+
+.masthead__drawer .masthead__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--s-4);
+  color: var(--ink-900);
+}
+
+.masthead__drawer .masthead__link::after {
+  display: none;
+}
+
+.masthead__drawer .meta {
+  padding-top: var(--s-3);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Band extras ------------------------------------------------------- */
+
+.band__aside li {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-family: var(--font-meta);
+  font-size: var(--t-meta);
+  letter-spacing: var(--tr-meta);
+  text-transform: uppercase;
+  color: var(--dark-text-muted);
+}
+
+.band__aside svg {
+  color: var(--signal);
+  flex: none;
+}
+
+/* ---- Responsive -------------------------------------------------------- */
+
+@media (max-width: 1020px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .hero__plates {
+    justify-items: start;
+    margin-top: var(--s-6);
+    padding-left: 8%;
+  }
+
+  .hero__plate--front {
+    width: min(62%, 320px);
+  }
+
+  .hero__plate--back {
+    width: 40%;
+    top: var(--s-6);
+    left: 46%;
+  }
+
+  .band__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+
+  .band__aside {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--dark-line);
+    padding-top: var(--s-5);
+  }
+}
+
+@media (max-width: 860px) {
+  .masthead__links {
+    display: none;
+  }
+
+  .masthead__burger {
+    display: inline-flex;
+  }
+
+  .masthead__inner {
+    height: 62px;
+  }
+
+  .shead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-4);
+  }
+
+  .foot__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--s-6) var(--s-5);
+  }
+
+  .foot__col--lede {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero__title {
+    max-width: none;
+  }
+
+  .hero__plate--back {
+    display: none;
+  }
+
+  /* With nothing behind it, the sprocket strip reads as a stray column. */
+  .frame__perfs {
+    display: none;
+  }
+
+  .hero__plate--front {
+    width: min(88%, 340px);
+    rotate: 0deg;
+  }
+
+  .moves__item {
+    grid-template-columns: 40px minmax(0, 1fr);
+    /* Keep the two-row areas from the 900px breakpoint, or the body text is
+       pushed into an implicit third column and collapses to one word a line. */
+    grid-template-areas:
+      'no title'
+      '. body';
+    gap: var(--s-2) var(--s-4);
+  }
+
+  /* Below the three-up layout the strip becomes a scrollable film. */
+  .strip {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(200px, 78vw);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    padding-bottom: var(--s-2);
+  }
+
+  .strip li {
+    scroll-snap-align: start;
+  }
+
+  .strip li:nth-child(2),
+  .strip li:nth-child(3) {
+    margin-top: 0;
+  }
+
+  .masthead__cta {
+    padding-inline: var(--s-3);
+  }
+
+  .band__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
