@@ -1,0 +1,662 @@
+/* ==========================================================================
+   Latent — components
+   Buttons, fields, panels, frames, labels, icons, loading states.
+   Every value here resolves to a token from tokens.css.
+   ========================================================================== */
+
+/* ---- Buttons ---------------------------------------------------------- */
+/* Square-ish plates with a 1px hard edge — closer to a camera button than a
+   SaaS pill. The primary is solid ink; nothing on this site is a gradient. */
+
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink-900);
+  --btn-line: var(--line-hard);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  padding: 13px var(--s-5);
+  border: 1px solid var(--btn-line);
+  border-radius: var(--r-sm);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-text);
+  font-size: var(--t-small);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background-color var(--d-fast) var(--ease-out),
+    border-color var(--d-fast) var(--ease-out),
+    color var(--d-fast) var(--ease-out),
+    transform var(--d-fast) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.42;
+  transform: none;
+}
+
+.btn__icon {
+  flex: none;
+}
+
+/* The arrow nudges on hover — the only motion a button needs. */
+.btn__arrow {
+  transition: transform var(--d-base) var(--ease-out);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(3px);
+}
+
+.btn--primary {
+  --btn-bg: var(--ink-900);
+  --btn-fg: var(--paper-100);
+  --btn-line: var(--ink-900);
+}
+
+.btn--primary:hover {
+  --btn-bg: #262219;
+}
+
+.btn--secondary {
+  --btn-bg: transparent;
+  --btn-line: var(--line-mid);
+}
+
+.btn--secondary:hover {
+  --btn-bg: var(--paper-300);
+  --btn-line: var(--line-hard);
+}
+
+/* Signal is reserved for the one action on a surface. */
+.btn--signal {
+  --btn-bg: var(--signal);
+  --btn-fg: #fdf8f4;
+  --btn-line: var(--signal);
+}
+
+.btn--signal:hover {
+  --btn-bg: var(--signal-deep);
+  --btn-line: var(--signal-deep);
+}
+
+/* The default ring is the signal colour, which would vanish on a signal fill;
+   outside the button the paper tone reads on every surface it sits on. */
+.btn--signal:focus-visible {
+  outline-color: var(--paper-100);
+  box-shadow: 0 0 0 5px var(--signal-deep);
+}
+
+.btn--ghost {
+  --btn-line: transparent;
+  padding-inline: var(--s-2);
+  font-family: var(--font-meta);
+  font-size: var(--t-meta);
+  letter-spacing: var(--tr-meta);
+  text-transform: uppercase;
+}
+
+.btn--ghost:hover {
+  --btn-bg: var(--paper-300);
+}
+
+.btn--sm {
+  padding: 9px var(--s-4);
+  font-size: var(--t-meta);
+}
+
+.btn--lg {
+  padding: 17px var(--s-6);
+  font-size: var(--t-body);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Icon-only square, used for the history buttons in the toolbar. */
+.btn--icon {
+  width: 36px;
+  height: 34px;
+  padding: 0;
+}
+
+/* Text link with a rule that draws in from the left. */
+.link-rule {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
+  font-family: var(--font-meta);
+  font-size: var(--t-meta);
+  letter-spacing: var(--tr-meta);
+  text-transform: uppercase;
+  color: var(--ink-900);
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.link-rule::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--d-base) var(--ease-out);
+}
+
+.link-rule:hover::after,
+.link-rule:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---- Fields ----------------------------------------------------------- */
+
+.field {
+  display: grid;
+  gap: var(--s-2);
+}
+
+.field__label {
+  font-family: var(--font-meta);
+  font-size: var(--t-micro);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.input {
+  width: 100%;
+  padding: 12px var(--s-4);
+  background: var(--paper-100);
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-sm);
+  font-size: var(--t-small);
+  transition:
+    border-color var(--d-fast) var(--ease-out),
+    background-color var(--d-fast) var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--ink-300);
+}
+
+.input:hover {
+  border-color: var(--ink-300);
+}
+
+.input:focus-visible {
+  border-color: var(--ink-900);
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ink-900);
+}
+
+.surface-dark .input:focus-visible {
+  background: var(--dark-200);
+  box-shadow: 0 0 0 2px var(--dark-text);
+}
+
+/* ---- Panels ----------------------------------------------------------- */
+/* A panel is paper on paper: a hairline and a slight tone shift, no shadow. */
+
+.panel {
+  background: var(--paper-100);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-md);
+  padding: var(--s-5);
+}
+
+.panel--flush {
+  padding: 0;
+}
+
+.panel--dark {
+  background: var(--dark-200);
+  border-color: var(--dark-line);
+}
+
+.panel__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-bottom: var(--s-3);
+  margin-bottom: var(--s-4);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+/* ---- Frames ----------------------------------------------------------- */
+/* Photographs are presented as prints: thin mount board, no rounded corners. */
+
+.frame {
+  position: relative;
+  margin: 0;
+  padding: var(--s-2);
+  background: var(--paper-100);
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-xs);
+  box-shadow: var(--lift-md);
+}
+
+.frame__window {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-300);
+}
+
+.frame__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--d-slow) var(--ease-out);
+}
+
+.frame__image[data-ready] {
+  opacity: 1;
+}
+
+.frame__skeleton {
+  position: absolute;
+  inset: 0;
+}
+
+.frame__caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-1) var(--s-1);
+}
+
+/* Sprocket strip: the one literal film reference in the system. */
+.frame__perfs {
+  --perf: var(--paper-200);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background-image: radial-gradient(circle, var(--perf) 2.5px, transparent 2.6px);
+  background-size: 12px 16px;
+  background-position: center;
+  border-inline: 1px solid var(--line-soft);
+}
+
+.frame__perfs--left {
+  left: -13px;
+}
+
+/* ---- Tags ------------------------------------------------------------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 5px var(--s-3);
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-pill);
+  background: transparent;
+  font-family: var(--font-meta);
+  font-size: var(--t-micro);
+  letter-spacing: var(--tr-caps);
+  text-transform: uppercase;
+  color: var(--ink-700);
+  white-space: nowrap;
+}
+
+.tag--active {
+  border-color: var(--ink-900);
+  background: var(--ink-900);
+  color: var(--paper-100);
+}
+
+/* A pending marker: the dot is the signal, the frame stays quiet. */
+.tag--pending {
+  border-style: dotted;
+  color: var(--ink-500);
+}
+
+button.tag {
+  cursor: pointer;
+  transition:
+    border-color var(--d-fast) var(--ease-out),
+    background-color var(--d-fast) var(--ease-out),
+    color var(--d-fast) var(--ease-out);
+}
+
+button.tag:hover {
+  border-color: var(--ink-900);
+  color: var(--ink-900);
+}
+
+.tag__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--signal);
+  flex: none;
+}
+
+/* ---- Icons ------------------------------------------------------------ */
+
+.icon {
+  display: block;
+  flex: none;
+  color: currentColor;
+}
+
+/* ---- Loading ---------------------------------------------------------- */
+/* A single hairline that advances like a film wind — no spinner. */
+
+.progress {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+
+.progress__bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 32%;
+  background: var(--signal);
+  animation: wind 1.15s var(--ease-in-out) infinite;
+}
+
+@keyframes wind {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+/* Placeholder for an image still decoding. */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-300);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 80%
+  );
+  transform: translateX(-100%);
+  animation: sheen 1.4s var(--ease-in-out) infinite;
+}
+
+@keyframes sheen {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* ---- Drop target ------------------------------------------------------ */
+/* Reads as an unexposed sheet in a sleeve, not a dashed cloud. */
+
+.drop {
+  position: relative;
+  display: grid;
+  gap: var(--s-3);
+  justify-items: start;
+  padding: var(--s-5);
+  background: var(--paper-100);
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-md);
+  box-shadow: var(--lift-sm);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition:
+    border-color var(--d-fast) var(--ease-out),
+    background-color var(--d-fast) var(--ease-out),
+    transform var(--d-base) var(--ease-out);
+}
+
+.drop:hover {
+  border-color: var(--ink-900);
+  transform: translateY(-2px);
+}
+
+.drop--over {
+  border-color: var(--signal);
+  background: var(--signal-wash);
+  transform: translateY(-2px);
+}
+
+.drop__index {
+  position: absolute;
+  top: var(--s-3);
+  right: var(--s-4);
+}
+
+.drop__row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.drop__glyph {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line-mid);
+  border-radius: var(--r-sm);
+  background: var(--paper-200);
+  color: var(--ink-900);
+  transition:
+    border-color var(--d-fast) var(--ease-out),
+    color var(--d-fast) var(--ease-out);
+}
+
+.drop:hover .drop__glyph {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+.drop__hint {
+  font-size: var(--t-small);
+  color: var(--ink-500);
+}
+
+/* The hidden input receives focus; the plate shows it. */
+.drop:focus-within {
+  border-color: var(--ink-900);
+  box-shadow: 0 0 0 2px var(--ink-900);
+}
+
+.drop.is-busy {
+  cursor: progress;
+  border-color: var(--signal);
+}
+
+/* ---- Upload button ---------------------------------------------------- */
+/* A <label> styled as a button, so the file picker opens without scripting. */
+
+.upload-button {
+  display: inline-grid;
+  gap: var(--s-2);
+  justify-items: start;
+}
+
+.upload-button .btn {
+  cursor: pointer;
+}
+
+.upload-button .btn.is-busy {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.upload-button .btn:focus-within {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.upload-button__error {
+  color: var(--signal);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.surface-dark .upload-button__error {
+  color: #e8836a;
+}
+
+/* ---- Contact sheet ---------------------------------------------------- */
+
+.sheet {
+  display: grid;
+  /* Wraps like a real contact sheet instead of forcing one long row. */
+  /* auto-fit, not auto-fill: empty tracks collapse instead of leaving a
+     blank panel at the end of the sheet. */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
+}
+
+.sheet__cell {
+  position: relative;
+  background: var(--paper-100);
+  padding: var(--s-3);
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  transition: background-color var(--d-base) var(--ease-out);
+}
+
+.sheet__cell:hover {
+  background: var(--paper-300);
+}
+
+.sheet__thumb {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--paper-300);
+  /* Neutral until hovered, so the sheet reads as one tonal object. */
+  filter: saturate(0.72) contrast(0.98);
+  transition: filter var(--d-slow) var(--ease-out);
+}
+
+.sheet__cell:hover .sheet__thumb {
+  filter: saturate(1) contrast(1);
+}
+
+.sheet__no {
+  position: absolute;
+  top: var(--s-2);
+  right: var(--s-3);
+  /* A chip, so the frame number stays legible over dark photographs. */
+  padding: 1px 5px;
+  background: var(--paper-100);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-xs);
+  color: var(--ink-700);
+}
+
+/* ---- Numbered editorial list ------------------------------------------ */
+
+.moves {
+  border-top: 1px solid var(--line-hard);
+}
+
+.moves__item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: var(--s-5);
+  align-items: baseline;
+  padding-block: var(--s-5);
+  border-bottom: 1px solid var(--line-soft);
+  transition: background-color var(--d-base) var(--ease-out);
+}
+
+.moves__item:hover {
+  background: var(--paper-100);
+}
+
+.moves__no {
+  font-family: var(--font-meta);
+  font-size: var(--t-meta);
+  letter-spacing: var(--tr-meta);
+  color: var(--signal);
+}
+
+/* ---- Responsive -------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .moves__item {
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-areas:
+      'no title'
+      '. body';
+    gap: var(--s-2) var(--s-4);
+  }
+
+  /* Named areas only apply once the children claim them. */
+  .moves__no {
+    grid-area: no;
+  }
+
+  .moves__item .title {
+    grid-area: title;
+  }
+
+  .moves__item p {
+    grid-area: body;
+  }
+}
+
+@media (max-width: 620px) {
+  .sheet {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(158px, 78vw);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sheet__cell {
+    scroll-snap-align: start;
+  }
+
+  .btn--lg {
+    padding: 15px var(--s-5);
+    width: 100%;
+  }
+}

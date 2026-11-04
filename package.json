@@ -1,0 +1,31 @@
+{
+  "name": "latent",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "presets:update": "node scripts/presets/acquire.mjs && node scripts/presets/import.mjs && node scripts/presets/generate.mjs && node scripts/presets/build-library.mjs",
+    "presets:build": "node scripts/presets/build-library.mjs",
+    "presets:verify": "node scripts/presets/verify.mjs",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "jpeg-js": "^0.4.4",
+    "jsdom": "^30.1.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vitest": "^5.1.0"
+  }
+}
